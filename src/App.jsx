@@ -10,11 +10,12 @@ import Explore from './pages/explore/Explore';
 import Details from './pages/details/Details';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   const dispatch = useDispatch();
-  const {url} = useSelector((state) => state.home);
-  
+  const { url } = useSelector((state) => state.home);
+
 
   useEffect(() => {
     fetchTesting()
@@ -29,10 +30,17 @@ function App() {
   }
 
   return (
-    <div className="App">
-      App <br />
-      {url?.total_pages}
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/:mediaType/:id' element={<Details />} />
+        <Route path='/search/:quary' element={<SearchResult />} />
+        <Route path='/explore/:mediaType' element={<Explore />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </>
   )
 }
 
