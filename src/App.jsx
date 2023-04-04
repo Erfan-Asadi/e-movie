@@ -1,7 +1,15 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { fetchApiData } from './utils/api';
 
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    fetchTesting()
+  }, []);
+
+  const fetchTesting = () => {
+    fetchApiData('/movie/popular')
+      .then(res => console.log(res));
+  }
 
   return (
     <div className="App">
