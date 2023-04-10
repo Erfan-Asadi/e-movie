@@ -19,6 +19,31 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    }
+  }, [lastScrollY])
+
+  const controlNavbar = () => {
+    if (window.scrollY > 200) {
+      if (window.scrollY > lastScrollY && !mobileMenu) {
+        setShow("hide");
+      } else {
+        setShow('show')
+      }
+      setLastScrollY(window.scrollY);
+    } else {
+      setShow('top')
+    }
+  }
+
   const searchQueryHandler = (e) => {
     e.preventDefault();
     if (query.length > 0) {
