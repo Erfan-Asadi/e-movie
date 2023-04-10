@@ -4,7 +4,9 @@ import useFetch from '../../../hooks/useFetch';
 import { useSelector } from 'react-redux';
 import Img from '../../../components/laziLoadImage/Img';
 import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
-import './style.scss'
+import './style.scss';
+
+
 const HeroBanner = () => {
   const [background, setBackground] = useState("");
   const [query, setQuery] = useState("");
