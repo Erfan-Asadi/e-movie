@@ -1,0 +1,14 @@
+@import '../../../mixins.scss';
+
+.heroBanner {
+    width: 100%;
+    height: 700px;
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    @include md {
+        height: 250px;
+    }
+}

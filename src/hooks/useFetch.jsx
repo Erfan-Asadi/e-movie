@@ -1,28 +1,32 @@
 import { useEffect, useState } from "react";
 import { fetchApiData } from "../utils/api";
 const useFetch = (url) => {
-    
-    // const [data, setData] = useState(null);
-    // const [loading, setLoading] = useState(null);
-    // const [error, setError] = useState(null);
-    
-    // instead three state, merge them to one state
-    // possible values : 'loading' - 'success' - 'error'
-    const [fetchState, setFetchState] = useState(null);
+
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(null);
+    const [error, setError] = useState(null);
+
 
     useEffect(() => {
-        setFetchState({status: 'loading', value: 'loading'}); // when pending
+        // when pending
+        setLoading('Loading...');
+        setError(false);
+        setData(false);
 
         fetchApiData(url)
             .then((res) => {
-                setFetchState({status: 'success', value: res}); // when resolved
+                // when resolved
+                setLoading(false);
+                setData(res);
             })
             .catch((err) => {
-                setFetchState({status: 'error', value: `Something went wrong! ${err}`}); // when rejected
+                // when rejected
+                setLoading(false);
+                setError("Error caused!" + err);
             });
     }, [url]);
 
-    return fetchState;
+    return { data, error, loading };
 };
 
 export default useFetch;
