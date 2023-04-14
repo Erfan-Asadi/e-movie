@@ -5,7 +5,7 @@ import { useState } from 'react';
 const SwitchTabs = ({ data, onTabChange }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [left, setLeft] = useState(0);
-
+  
   const activeTab = (tab, index) => {
     // because width's of each tab is 100px
     setLeft(100 * index);
@@ -14,6 +14,7 @@ const SwitchTabs = ({ data, onTabChange }) => {
     }, 300);
     onTabChange(tab, index);
   }
+
   return (
     <div className='switchingTabs'>
       <div className="tabItems">
