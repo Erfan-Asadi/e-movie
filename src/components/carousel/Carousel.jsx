@@ -32,7 +32,11 @@ const Carousel = ({ data, loading }) => {
         )
     }
     const navigation = (dir) => {
-
+        const container = carouselWrapper.current;
+        const scrollAmount = dir === 'right' ?
+                            (container.scrollLeft + container.offsetWidth + 20) :
+                            (container.scrollLeft - container.offsetWidth - 20)
+    container.scrollTo(scrollAmount, 0);                        
     }
     return (
         <div className="carousel">
@@ -46,14 +50,15 @@ const Carousel = ({ data, loading }) => {
                     className="carouselRightNav arrow"
                 />
                 {!loading ? (
-                    <div className="carouselItems">
+                    <div className="carouselItems" ref={carouselWrapper}>
                         {data?.map(item => {
                         const posterUrl = item.poster_path ? url.poster + item.poster_path : PosterFallback; 
 
                             return (
                                 <div
                                     key={item.id}
-                                    className="carouselItem">
+                                    className="carouselItem"
+                                    onClick={()=> navigate(`${item.media_type}/${item.id}`)}>
                                     <div className="posterBlock">
                                         <Img src={posterUrl}/>
                                         <CircularRating rating={item.vote_average.toFixed(1)}/>
