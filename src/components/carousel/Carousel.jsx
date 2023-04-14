@@ -11,6 +11,7 @@ import PosterFallback from "../../assets/no-poster.png";
 // import Genres from "../genres/Genres";
 
 import './style.scss'
+import CircularRating from "../circularRating/CircularRating";
 
 
 const Carousel = ({ data, loading }) => {
@@ -54,6 +55,7 @@ const Carousel = ({ data, loading }) => {
                                     className="carouselItem">
                                     <div className="posterBlock">
                                         <Img src={posterUrl}/>
+                                        <CircularRating rating={item.vote_average.toFixed(1)}/>
                                     </div>
                                     <div className="textBlock">
                                         <span className="title">{item.title || item.name}</span>
