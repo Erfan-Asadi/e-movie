@@ -16,7 +16,7 @@
 
     .arrow {
         font-size: 30px;
-        color: black;
+        color: rgb(36, 36, 36);
         position: absolute;
         top: 44%;
         transform: translateY(-50%);
@@ -103,6 +103,7 @@
         margin-left: -20px;
         padding: 0 20px;
         scroll-behavior: smooth;
+
         @include md {
             gap: 20px;
             overflow: hidden;
