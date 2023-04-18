@@ -7,10 +7,12 @@ import Banner from './banner/Banner'
 const Details = () => {
   const { id, mediaType } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}`);
-  // console.log(data)
+  const { data: videos, loading: loadingVideos } = useFetch(`/${mediaType}/${id}/videos`);
+  const { data: credits, loading: creditsLoading } = useFetch(`/${mediaType}/${id}/credits`);
+
   return (
     <div>
-      <Banner loading={loading} data={data} />
+      <Banner loading={loading} data={data} crew={credits?.crew} video={videos?.results?.[0]} />
     </div>
   )
 }
