@@ -9,6 +9,7 @@ import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Spinner from "../../components/spinner/Spinner";
 import noResults from "../../assets/no-results.png";
+import Img from "../../components/laziLoadImage/Img";
 
 const SearchResult = () => {
   const [data, setData] = useState(null);
@@ -83,6 +84,7 @@ const SearchResult = () => {
           ) : (
             <span className="resultNotFound">
               Sorry, Results not found!
+              <Img src={noResults} />
             </span>
           )}
         </ContentWrapper>

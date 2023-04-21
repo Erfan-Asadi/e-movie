@@ -5,6 +5,17 @@
     .resultNotFound {
         font-size: 24px;
         color: var(--black-light);
+
+        span {
+            display: flex !important;
+            justify-content: center;
+            img {
+                max-width: 300px;
+                @include md {
+                    max-width: 400px;
+                }
+            }
+        }
     }
     .pageTitle {
         font-size: 24px;
