@@ -4,6 +4,7 @@ import useFetch from '../../hooks/useFetch'
 import './style.scss'
 import Banner from './banner/Banner'
 import Cast from './cast/Cast'
+import VideosPart from './videosPart/VideosPart'
 
 const Details = () => {
   const { id, mediaType } = useParams();
@@ -15,6 +16,7 @@ const Details = () => {
     <div>
       <Banner loading={loading} data={data} crew={credits?.crew} video={videos?.results?.[0]} />
       <Cast data={credits?.cast} loading={creditsLoading}/>
+      <VideosPart data={videos} loading={loadingVideos}/>
     </div>
   )
 }
