@@ -7,7 +7,7 @@ import Cast from './cast/Cast'
 import VideosPart from './videosPart/VideosPart'
 import Similar from './carousels/Similar'
 import Recommendation from './carousels/Recommendation'
-
+ 
 const Details = () => {
   const { id, mediaType } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}`);

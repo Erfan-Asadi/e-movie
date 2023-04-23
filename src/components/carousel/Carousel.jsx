@@ -32,9 +32,9 @@ const Carousel = ({ endpoint, data, loading, title }) => {
     const navigation = (dir) => {
         const container = carouselWrapper.current;
         const scrollAmount = dir === 'right' ?
-                            (container.scrollLeft + container.offsetWidth + 20) :
-                            (container.scrollLeft - container.offsetWidth - 20)
-    container.scrollTo(scrollAmount, 0);                        
+            (container.scrollLeft + container.offsetWidth + 20) :
+            (container.scrollLeft - container.offsetWidth - 20)
+        container.scrollTo(scrollAmount, 0);
     }
     return (
         <div className="carousel">
@@ -51,17 +51,17 @@ const Carousel = ({ endpoint, data, loading, title }) => {
                 {!loading ? (
                     <div className="carouselItems" ref={carouselWrapper}>
                         {data?.map(item => {
-                        const posterUrl = item.poster_path ? url.poster + item.poster_path : PosterFallback; 
+                            const posterUrl = item.poster_path ? url.poster + item.poster_path : PosterFallback;
 
                             return (
                                 <div
                                     key={item.id}
                                     className="carouselItem"
-                                    onClick={()=> navigate(`${item.media_type || endpoint}/${item.id}`)}>
+                                    onClick={() => navigate(`/${item.media_type || endpoint}/${item.id}`)}>
                                     <div className="posterBlock">
-                                        <Img src={posterUrl}/>
-                                        <CircularRating rating={item.vote_average.toFixed(1)}/>
-                                        <Genres data={item.genre_ids.slice(0, 2)}/>
+                                        <Img src={posterUrl} />
+                                        <CircularRating rating={item.vote_average.toFixed(1)} />
+                                        <Genres data={item.genre_ids.slice(0, 2)} />
                                     </div>
                                     <div className="textBlock">
                                         <span className="title">{item.title || item.name}</span>
@@ -72,12 +72,12 @@ const Carousel = ({ endpoint, data, loading, title }) => {
                         })}
                     </div>
                 ) : (
-                   <div className="loadingSkeleton">
-                    {skeletonItem()}
-                    {skeletonItem()}
-                    {skeletonItem()}
-                    {skeletonItem()}
-                   </div>
+                    <div className="loadingSkeleton">
+                        {skeletonItem()}
+                        {skeletonItem()}
+                        {skeletonItem()}
+                        {skeletonItem()}
+                    </div>
                 )}
             </ContentWrapper>
         </div>
